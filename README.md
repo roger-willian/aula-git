@@ -151,6 +151,8 @@ Esse arquivo está pronto para ser salvo como uma nova versão.
 Podemos colocar quantos arquivos quisermos nessa área antes de gerar uma nova versão do repositório.
 Podemos até criar arquivos novos e adicionar eles desse mesmo jeito.
 
+### Adicionar todas as modificação de uma vez
+
 Como uma última nota, muitas vezes queremos colocar todas as modificações de uma vez só.
 Para isso podemos digitar:
 
@@ -189,9 +191,60 @@ Por exemplo, o mesmo colaborador executa o comando:
 
 `git commit -m "Modifiquei o README.md para testar o git"`
 
+O git vai dizer que adicionou um arquivo com algumas modificações.
+Para ver melhor o que aconteceu digite o comando de status novamente.
+Deve aparecer algo do tipo:
 
+```
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+```
+
+Isso diz que o seu repositório está na frente do repositório original por 1 versão.
+Além disso diz que não tem mais nenhuma modificação para ser adicionada.
+
+### Fazer tudo de uma vez só
+
+Como uma última nota dessa seção, às vezes queremos criar uma nova versão com todas as modificações que temos no nosso repositório local.
+Para pular o passo de adicionar as modificações, podemos criar uma nova versão adicionando as modificações todas diretamente.
+Para isso escrevemos algo do tipo:
+
+`git commit -a -m <mensagem>`
+
+Esse `-a` indica que queremos adicionar tudo antes de criar a nova versão.
 
 ## Fazer um push
+
+Muito bem.
+Até agora, tudo que você fez foi na sua máquina.
+Ou seja, os seus colaboradores ainda não têm acesso às suas modificações.
+Para que elas fiquem acessíveis, é preciso enviá-las ao repositório remoto, isto é, ao Github.
+
+O comando que envia as novas versões ao repositório remoto é o comando `push`. Esse comando é simples assim:
+
+`git push`
+
+Mas para poder executá-lo é preciso autenticar com o servidor do Github.
+Para isso é preciso de um código de autenticação que o Github chama de *Personal Access Token* (PAT).
+
+Para conseguir ele, clique no seu avatar bem acima e à direita na página do seu repositório.
+Depois clique em "Settings" e no menu à esquerda e bem em baixo clique em "Developer settings".
+Em seguida clique em "Personal access tokens" e "Generate new token".
+Digite um nome para o seu token e marque a caixinha "repo".
+Clique em "Generate token" e __copie o código gerado__ porque ele nunca mais ficará visível!
+
+Depois de tudo isso, agora sim, basta digitar o comando:
+
+`git push`
+
+Quando o git pedir o usuário, digite o seu nome de usuário, o meu por exemplo é `roger-willian`.
+Quando o git pedir a senha, cole o seu token e dê enter.
+
+Pronto! Se tudo correu bem, o git deve dar uma mensagem como essa:
+
 
 ## Fazer um pull
 
