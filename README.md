@@ -55,16 +55,141 @@ Para testar, execute na sua máquina o comando:
 ```git clone https://github.com/roger-willian/aula-git.git```
 
 Executar o comando acima copia todo o conteúdo do repositório `aula-git` para uma pasta com o mesmo nome dentro do diretório atual.
+Você pode então abrir o arquivo `README.md` e olhar o que tem dentro.
 
 ### Configurar nome e email
 
+Antes de sair modificando as coisas e enviar devolta ao Github, é importante que a gente se identifique.
+No git isso é bem simples, basta salvar o nosso nome e email.
+Assim, qualquer modificação que fizermos vai ficar "assinada" depois.
+
+Para informar o meu nome, por exemplo, escrevo o comando:
+
+```git config user.name="Roger"```
+
+Para informar o meu email, escrevo:
+
+```git config user.email="roger.silva@canoas.ifrs.edu.br"```
+
+## Criar um fork e adicionar colaboradores
+
+Agora, para poder seguir esse tutorial com o seu próprio repositório, crie uma conta no Github e depois clique no botão "Fork" desse repositório aqui, ali em cima e à direita.
+
+Segundo o próprio Github, um fork é uma cópia de um repositório.
+Fazer um fork de um repositório permite que você experimente livremente fazendo modificações sem afetar o projeto original.
+
+Para adicionar o seu colega como colaborador do seu repositório, clique no botão "Settings" ali em cima e no meio.
+Depois clique em "Collaborators" no menu da esquerda.
+Então é só clicar em "Add people" e fornecer os dados do colega.
+Use os dados do usuário dele do Github!
+
+Agora que você já fez o fork desse repositório e configurou os colaboradores, delete o clone do repositório original que você tinha criado na sua máquina e faça um novo clone do **seu** fork.
+Os colaboradores devem fazer a mesma coisa.
+Não esqueçam de entrar no diretório `aula-git` e configurar os seus nomes e endereços de email!
+
 ## Modificar um arquivo
+
+Tudo configurado? Então digitem o seguinte:
+
+`git status`
+
+Esse comando mostra o status do seu repositório local.
+Deve aparecer algo do tipo:
+
+```
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+```
+
+Isso quer dizer que o seu repositório está igualzinho à versão que você baixou do Github.
+Vá em frente e edite esse o arquivo `README.md`, conserte algum erro ou modifique algo que não gostou e salve ele.
+Feito isso, digite de novo:
+
+`git status`
+
+Agora a coisa deve ter mudado e deve ter aparecido alguma coisa como:
+
+```
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Essas mensagens indicam que há um arquivo com modificações locais.
+Ou seja, você salvou um arquivo modificado, mas não "entregou" ele para o git ainda.
+Em alguns terminais esse arquivo aparece até em cor vermelha para indicar isso.
 
 ## Adicionar um arquivo para a área de stage
 
+Para indicar para o git que esse arquivo que foi modificado deve ser enviado ao servidor mais tarde, adicionamos ele à área de staging.
+Essa é uma área de preparação, onde colocamos as modificações que serão salvas no servidor.
+Para fazer isso basta escrevermos:
+
+`git add README.md`
+
+Se executarmos o comando de status novamente, agora vai aparecer:
+
+```
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   README.md
+```
+
+Agora o git está dizendo que já colocamos um arquivo na área de preparação.
+Esse arquivo está pronto para ser salvo como uma nova versão.
+Podemos colocar quantos arquivos quisermos nessa área antes de gerar uma nova versão do repositório.
+Podemos até criar arquivos novos e adicionar eles desse mesmo jeito.
+
+Como uma última nota, muitas vezes queremos colocar todas as modificações de uma vez só.
+Para isso podemos digitar:
+
+`git add .`
+
+Onde `.` significa todo o diretório atual.
+
 ## Reverter um arquivo da área de stage
 
+Mas vamos supor que eu me confundi e que esse arquivo não era para ir já nessa versão.
+Sem problemas! Eu posso remover ele da área de preparação usando o comando:
+
+`git reset README.md`
+
+Isso não altera nada o conteúdo do arquivo que eu já havia salvo.
+Apenas indica ao git que as modificações desse arquivo não fazem parte da próxima versão.
+Usem o comando status novamente para ver o que aconteceu.
+Esse comando é muito importante e deve ser usado regularmente!
+
 ## Fazer um commit
+
+Tá, mas chega de brincadeira!
+Todo mundo sabe que o professor não se engana! (kkkk)
+Então vamos adicionar de novo esse arquivo à área de preparação para podermos criar essa tão falada nova versão.
+Um dos colaboradores adiciona na sua máquia o arquivo de novo:
+
+`git add README.md`
+
+Uma nova versão no git é o que chamamos de **commit**, ou seja, um commit nada mais é que um ponto no histórico dos arquivos.
+Para fazer um commit, digitamos algo do tipo:
+
+`git commit -m <mensagem>`
+
+Onde `<mensagem>` é uma mensagem descritiva indicando o que eu modifiquei e por que eu fiz essas modificações.
+Por exemplo, o mesmo colaborador executa o comando:
+
+`git commit -m "Modifiquei o README.md para testar o git"`
+
+
 
 ## Fazer um push
 
