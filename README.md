@@ -372,7 +372,7 @@ Aqui vamos entrar em uns tópicos um pouco mais avançados.
 ## Evitar um conflito
 
 Mais adiante vamos falar de como resolver um conflito no git.
-Mas, antes disso vamos primeiro ver como podemos evitar esses conflitos.
+Porém, antes disso, vamos primeiro ver como podemos evitar esses conflitos.
 A estratégia para evitar conflitos é basicamente:
 
 - Evitar mexer no mesmo arquivo ao mesmo tempo que os colaboradores;
@@ -388,7 +388,30 @@ Ou seja, em se tratando de software, isso quer dizer:
 
 ## Resolver um conflito
 
+Quando dois commits modificam a mesma parte de um arquivo o git pode não ser capaz de encontrar a melhor maneira de juntar as modificações.
+Nesse caso ocorre um conflito, que vai ser indicado por uma mensagem mais ou menos assim:
 
+```
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+Nesse caso, se abrirmos o arquivo com conflito vamos encontrar o problema marcado com sinais de >>, == e << mais ou menos assim:
+
+```
+ <<<<<<< HEAD
+ Mas, antes disso vamos primeiro ver como podemos evitar esses conflitos.
+ =======
+ Porém antes disso, vamos primeiro ver como podemos evitar esses conflitos.
+ >>>>>>> 4efdd196e3e837494bee185f3ee0e5dbf0249e35
+```
+
+A parte de cima, depois da linha `<<<<<<< HEAD`, é nossa versão, com as nossas modificações.
+Já a parte de baixo entre as linhas `=======` e `>>>>>>> 4efdd196e3e837494bee185f3ee0e5dbf0249e35` são as modificações de um outro colaborador.
+
+Para resolver o conflito, é preciso ler e entender o melhor jeito de juntar as duas modificações.
+Depois disso substituímos cada bloco com conflito pela versão correta, salvamos e fazemos um novo `git commit`.
 
 ## Descartar uma modificação local
 
