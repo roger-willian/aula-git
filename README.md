@@ -409,13 +409,39 @@ Nesse caso, se abrirmos o arquivo com conflito vamos encontrar o problema marcad
 
 A parte de cima, depois da linha `<<<<<<< HEAD`, é nossa versão, com as nossas modificações.
 Já a parte de baixo entre as linhas `=======` e `>>>>>>> 4efdd196e3e837494bee185f3ee0e5dbf0249e35` são as modificações de um outro colaborador.
+Esse código bem grande é o código do commit que a outra pessoa fez.
+Além disso podem ter vários conflitos no mesmo arquivo e temos que tratar cada um deles.
 
 Para resolver o conflito, é preciso ler e entender o melhor jeito de juntar as duas modificações.
 Depois disso substituímos cada bloco com conflito pela versão correta, salvamos e fazemos um novo `git commit`.
 
-## Descartar uma modificação local
+## Criar um branch
 
-## Criar uma branch
+Como vocês já devem ter visto, o git tem um fluxo de trabalho um pouco mais complexo do que, por exemplo, editar arquivos compartilhados no Google Docs.
+Mas isso tudo facilita o controle das versões do software e, no final das contas, trabalhar com o git é um esforço que vale a pena.
+
+Entretanto, devemos tomar alguns cuidados quando trabalhamos com uma equipe de desenvolvedores.
+Do contrário, vamos passar o dia todo resolveldo conflitos e outros problemas que podem aparecer.
+Uma das técnicas usadas para manter as coisas sãs é o emprego de ramos ou *branches*.
+
+Um ramo é como se fosse um pequeno desvio no histórico dos arquivos.
+Na verdade desde o início desse tutorial estávamos usando um ramo.
+Esse ramo é o ramo principal ou `main`, muitas vezes chamado de `trunk`.
+
+Quando criamos um novo ramo, em geral, criamos uma cópia de trabalho dos arquivos.
+Isso quer dizer que nesse novo ramo podemos fazer as modificações que quisermos sem afetar o ramo principal.
+Depois que estivermos satisfeitos com as modificações que fizemos em um ramo, podemos escolher juntar essas modificações de volta para o ramo principal ou até mesmo descartá-las.
+
+Para criar um ramo apenas na nossa máquina local, basta digitar:
+
+`git branch <nome>`
+
+Onde `<nome>` é o nome que queremos dar ao novo ramo.
+O comando a seguir, por exemplo, cria um novo ramo chamado `meu_ramo`:
+
+`git branch meu_ramo`
+
+
 
 ## Fazer um merge
 
