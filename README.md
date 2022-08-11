@@ -372,7 +372,7 @@ Aqui vamos entrar em uns tópicos um pouco mais avançados.
 ## Evitar um conflito
 
 Mais adiante vamos falar de como resolver um conflito no git.
-Mas antes disso vamos primeiro ver como podemos evitar esses conflitos.
+Porém antes disso, vamos primeiro ver como podemos evitar esses conflitos.
 A estratégia para evitar conflitos é basicamente:
 
 - Evitar mexer no mesmo arquivo ao mesmo tempo que os colaboradores;
