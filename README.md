@@ -441,9 +441,101 @@ O comando a seguir, por exemplo, cria um novo ramo chamado `meu_ramo`:
 
 `git branch meu_ramo`
 
+Mas esse comando por si só não faz mais nada.
+Para ver os ramos que temos disponíveis localmente digitamos:
 
+`git branch -a`
+
+Esse comando lista todos os ramos no nosso repositório local:
+
+```
+* main
+  meu_ramo
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+```
+
+Note como o ramo atual está com um asterisco ao lado para indicar onde estamos.
+Para ir para o nosso novo de ramo, basta digitar:
+
+`git checkout meu_ramo`
+
+Assumindo que não havia nenhuma modificação pendente, estaremos agora no novo ramo.
+Isso é facilmente comprovado digitando:
+
+`git branch -a`
+
+Que imprime na tela:
+
+```
+  main
+* meu_ramo
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+```
+
+### Para que servem esses ramos?
+
+A utilização mais comum de um ramo é para desenvover uma nova feature.
+Criamos um pequeno desvio do ramo principal, onde podemos editar os arquivos e salvar as nossas versões.
+Quando todos os testes estiverem passando e estivermos satisfeitos com a nova funcionalidade, podemos juntar essas modificações ao ramo principal e publicar, isto é, fazer `git push`, para que os outros desenvolvedores tenham acesso ao nosso código.
+
+Mas ramos podem ser usados para outras coisas também.
+Como, por exemplo, para manter duas linhas diferentes de códigos.
+Uma versão mais antiga, digamos 2.5, do nosso software ainda está sendo suportada.
+Mas uma versão mais nova, digamos 3.0, já está sendo desenvolvida.
+Criamos um ramo para cada versão e assim conseguimos isolar as modificações em cada uma.
+Podemor ir corrigindo os bugs na versão mais velha e trazendo para a versão mais nova apenas aquelas correções que fazem sentido.
 
 ## Fazer um merge
+
+Para juntar um ramo com outro, vamos primeiro ao ramo destino.
+Depois digitamos o comando `merge`:
+
+`git merge <origem>`
+
+Onde `<origem>` é o nome do ramo que queremos juntar a esse ramo destino.
+
+Por exemplo, estávamos no ramo `main`, mas queremos criar uma nova feature, para isso criamos um ramo chamado `login_usuario`:
+
+```
+git branch login_usuario
+git checkout login_usuario
+```
+
+Ai fazemos as nossas modificações, salvamos tudo, testamos tudo e depois:
+
+`git commit -a -m "Terminei a feature do login do usuário"`
+
+Agora, com tudo certinho, eu posso ir ao ramo principal e pegar as minhas modificações que estavam no ramo da minha feature:
+
+```
+git checkout main
+git merge login_usuario
+```
+
+Se tudo correr bem eu já tenho um commit que juntou a minha feature ao ramo principal.
+Agora é só:
+
+`git push`
+
+Se algo deu errado, ou seja, um conflito, eu tenho que resolver ele, rodar os testes de novo e, aí sim, publicar essas modificações.
+
+Uma alternativa é fazer o merge ao contrário primeiro.
+Isto é, assumindo que eu estou no ramo da minha feature:
+
+`git merge main`
+
+Isso vai facilitar as coisas porque não vai "sujar" o meu ramo principal ainda.
+Eu resolvo os conflitos e faço os commits que forem necessários e por fim:
+
+```
+git checkout main
+git merge login_usuario
+```
+
+Como eu já resolvi todos os conflitos e problemas no meu outro ramo, esse merge não deve dar nenhum erro mais.
+De qualquer maneira é sempre bom rodar os testes mais uma vez antes de fazer um `git push`.
 
 # Avançado
 
