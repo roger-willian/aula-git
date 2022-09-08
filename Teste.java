@@ -18,7 +18,7 @@ public class Teste {
     }
 
     private static void printarNomesFuncionarios(List<Funcionario> funcionarios) {
-        System.out.println("\n=-=-=-= Funcionários =-=-=-=");
+        System.out.println("\n=-=-=-= Funcionários =-=-=-= ");
         funcionarios.forEach(funcionario -> System.out.println(funcionario.getNome()));
     }
 
